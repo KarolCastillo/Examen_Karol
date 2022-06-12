@@ -83,5 +83,12 @@
             @yield('content')
         </main>
     </div>
+    <div class="container">
+        @yield('conten')
+    </div>
+
+    <!--para la alerta-->
+    <script src="{{asset('js/app.js')}}"></script>
+    @yield('alert')
 </body>
 </html>
