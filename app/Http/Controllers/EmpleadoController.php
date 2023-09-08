@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Empleado;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -47,31 +45,30 @@ class EmpleadoController extends Controller
                 'correo' => $validator['correo'],
                 'direccion' => $validator['direccion'],
                 'departamento' => $validator['departamento'],
-            'id_usuario'=>Auth()->user()->id
-                //'idjornada'=>$validator['jornada'],
+                'id_usuario'=>Auth()->user()->id
+
             ]);
             //si funciona este
-            return back()->with('empleadoguardado', 'Empleado guardado con exito');
+        return redirect()->route('Listar')
+            ->with('empleadoguardado', 'Empleado guardado con exito');
     }
 
     public function modificar ($id){
         $empleado=Empleado::findorfail($id);
         return view('Empleados.editar', compact('empleado'));
-
     }
 
     public function edit(Request $request,$id){
         $datosempleado=request()->except((['_token','_method']));
         Empleado::where('id','=', $id)->update($datosempleado);
-        return back() ->with('empleadoguardado', 'Empleado modificado con exito');
-
+        return redirect()->route('Listar')
+            ->with('empleadoguardado', 'Empleado modificado con exito');
     }
 
     public function show($id)
     {
         $empleado = Empleado::find($id);
         return view('Empleados.info', compact('empleado'));
-
     }
 
 }

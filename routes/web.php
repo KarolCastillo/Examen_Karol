@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 Route:: view('/','auth.login');
 
-route::get("/LISTADO",[\App\Http\Controllers\EmpleadoController::class,'listado']);
-route::get("/CREAR",[\App\Http\Controllers\EmpleadoController::class,'crear']);
-route::get("/GUARDAR",[\App\Http\Controllers\EmpleadoController::class,'save'])->name("save");
-route::get("/EDITAR/{id}",[\App\Http\Controllers\EmpleadoController::class,'modificar'])->name('modificar');
-route::get("/edita/{id}",[\App\Http\Controllers\EmpleadoController::class,'edit'])->name('edit');
-route::get("/info/{id}",[\App\Http\Controllers\EmpleadoController::class,'show'])->name('show');
-route::delete("/delete/{id}",[\App\Http\Controllers\EmpleadoController::class,'delete'])->name('delete');
+route::get("/LISTADO",[\App\Http\Controllers\EmpleadoController::class,'listado'])->name('Listar')->middleware('auth');
+route::get("/CREAR",[\App\Http\Controllers\EmpleadoController::class,'crear'])->middleware('auth');
+route::get("/GUARDAR",[\App\Http\Controllers\EmpleadoController::class,'save'])->name("save")->middleware('auth');
+route::get("/EDITAR/{id}",[\App\Http\Controllers\EmpleadoController::class,'modificar'])->name('modificar')->middleware('auth');
+route::get("/edita/{id}",[\App\Http\Controllers\EmpleadoController::class,'edit'])->name('edit')->middleware('auth');
+route::get("/info/{id}",[\App\Http\Controllers\EmpleadoController::class,'show'])->name('show')->middleware('auth');
+route::delete("/delete/{id}",[\App\Http\Controllers\EmpleadoController::class,'delete'])->name('delete')->middleware('auth');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
