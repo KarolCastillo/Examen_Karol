@@ -30,6 +30,7 @@
                                 <div class=" col mb-3 ">
                                     <label for="">Codigo</label>
                                     <input type="text" class="form-control border border-primary" name="codigo_empleado" placeholder="01">
+                                    <input type="hidden" name="control" value="form">
                                 </div>
 
                                 <div class=" col mb-3 ">

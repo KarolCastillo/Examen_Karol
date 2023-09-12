@@ -16,7 +16,7 @@
                     <th scope="col">CORREO</th>
                     <th scope="col">DIRECCION</th>
                     <th scope="col">DEPARTAMENTO</th>
-                    <th scope="col">USUARIO</th>
+                    <!--th scope="col">USUARIO</--th-->
                     <th scope="col">EDITAR</th>
                     <th scope="col">VER</th>
                     <th scope="col">ELIMINAR</th>
@@ -32,7 +32,7 @@
                         <td class=" border px-4 py-2">{{$empleado->correo}}</td>
                         <td class=" border px-4 py-2">{{$empleado->direccion}}</td>
                         <td class=" border px-4 py-2">{{$empleado->departamento}}</td>
-                        <td class=" border px-4 py-2">{{$empleado->name}}</td>
+                        <!--td class=" border px-4 py-2"></td-->
                         <td class=" border px-4 py-2">
                             <div class="btn-group flex justify-center rounded-lg text-lg">
                                 <a href="{{ route('modificar',$empleado->id)}}" class=" mr-2 btn btn-primary">

@@ -8,10 +8,36 @@ use Illuminate\Support\Facades\DB;
 
 class EmpleadoController extends Controller
 {
+    //de aca
+
+    //funciona llama a todos
+    public function getAll(){
+        $empleado = Empleado::all();
+        return $empleado;
+    }
+
+
+    public function getEmpleado($id){
+        $empleado=Empleado::find($id);
+        return $empleado;
+    }
+
+    public function deleteEmpleado($id){
+        $empleado= $this->getEmpleado($id);
+        $empleado->delete();
+        return $empleado;
+    }
+
+    public function editEmpleado($id, Request $request){
+        $empleado = $this->getEmpleado($id);
+        $empleado->fill($request->all())->save();
+        return $empleado;
+    }
+    //hasta aca
     public function listado(){
         $emplaeados = DB::table('registro_de_empleados')
-            ->join('users', 'registro_de_empleados.id_usuario', '=', 'users.id')
-            ->select('registro_de_empleados.*', 'users.name')
+            //->join('users', 'registro_de_empleados.id_usuario', '=', 'users.id')
+           // ->select('registro_de_empleados.*', 'users.name')
             ->paginate(10);
         return view('Empleados.lista', compact('emplaeados'));
     }
@@ -27,6 +53,7 @@ class EmpleadoController extends Controller
     }
 
     public function save(Request $request){
+        if ($request->control=='form' || $request->control=='api'){
         $validator=$this->validate($request,[
 
             'codigo_empleado'=>'required',
@@ -45,12 +72,21 @@ class EmpleadoController extends Controller
                 'correo' => $validator['correo'],
                 'direccion' => $validator['direccion'],
                 'departamento' => $validator['departamento'],
-                'id_usuario'=>Auth()->user()->id
+                //'id_usuario'=>Auth()->user()->id
 
             ]);
+        }
             //si funciona este
-        return redirect()->route('Listar')
-            ->with('empleadoguardado', 'Empleado guardado con exito');
+        if ($request->control=='form'){
+            return redirect()->route('Listar')
+                ->with('empleadoguardado', 'Empleado guardado con exito');
+        }elseif ($request->control=='api'){
+            return response()->json([
+                'codigo' => '1',
+                'descripcion' => 'Guardado exitosamente',
+            ]);
+        }
+
     }
 
     public function modificar ($id){
