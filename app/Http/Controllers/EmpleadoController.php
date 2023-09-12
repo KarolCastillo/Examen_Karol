@@ -16,7 +16,6 @@ class EmpleadoController extends Controller
         return $empleado;
     }
 
-
     public function getEmpleado($id){
         $empleado=Empleado::find($id);
         return $empleado;
@@ -25,13 +24,18 @@ class EmpleadoController extends Controller
     public function deleteEmpleado($id){
         $empleado= $this->getEmpleado($id);
         $empleado->delete();
-        return $empleado;
+        return response()->json([
+            'Metodo' => 'eliminar',
+            'descripcion' => ' Empleado eliminado exitosamente', $empleado]);
     }
+
 
     public function editEmpleado($id, Request $request){
         $empleado = $this->getEmpleado($id);
         $empleado->fill($request->all())->save();
-        return $empleado;
+        return response()->json([
+            'Metodo' => 'Actualizar',
+            'descripcion' => ' Empleado actualizado exitosamente', $empleado]);
     }
     //hasta aca
     public function listado(){
