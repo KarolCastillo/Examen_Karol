@@ -6,7 +6,7 @@
         <div class="col-md-15">
             <h2 class="text-center mb-5"> <i class="fas fa-users"></i> LISTADO DE EMPLEADOS REGISTRADOS </h2>
             <a type="button " href="{{ url('/CREAR')}}" class="btn btn-success mb-3 mt-3 mr-2 md-3 offset float-left">Agregar un empleado  <i class="fas fa-plus"></i></a>
-
+         <div class="table-responsive">
             <table class="table table-bordered table-strpied text-center">
                 <thead class="thead-dark">
                 <tr>
@@ -57,6 +57,7 @@
                     @endforeach
                 </tbody>
             </table>
+         </div>
             <div
             {{$emplaeados->links()}}
 

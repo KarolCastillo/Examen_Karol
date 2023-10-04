@@ -28,5 +28,18 @@
         <img class="img-fluid" src="https://cdn-icons-png.flaticon.com/512/6073/6073873.png">
     </div>
 </div>
+<br>
+<br>
+<br>
+<footer class=" text-dark text-center py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="mb-0" style="transform: rotate(0deg); display: inline-block; font-size: 18px; transform-origin: top left;">Hecho por Karol Castillo</p>
+                <p class="mb-0" style="transform: rotate(0deg); display: inline-block; font-size: 18px; transform-origin: top left;">0909-20-19052 Desarrollo Web</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 @endsection

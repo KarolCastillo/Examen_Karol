@@ -13,11 +13,6 @@
                         <div class="card-body">
 
                             <div class="form-group">
-                                <strong>Usuario que creo al empleado:</strong>
-                                {{ $empleado->id_usuario }}
-                            </div>
-
-                            <div class="form-group">
                                 <strong>Codigo:</strong>
                                 {{ $empleado->codigo_empleado }}
                             </div>

@@ -25,7 +25,7 @@
                     <form action="{{route('edit',$empleado->id)}}" mathod="POST">
                         @csrf
                         @method('patch')
-                        <div class="card-header text-center text-white bg-primary"><i class="fas fa-user-plus"></i> EDITAR NUEVO EMPLEADO</div>
+                        <div class="card-header text-center text-white bg-primary"><i class="fas fa-user-plus"></i> EDITAR EMPLEADO</div>
                         <div class="card-body">
                             <div class="row g-3">
                                 <div class=" col mb-3 ">
