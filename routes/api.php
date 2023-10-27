@@ -23,3 +23,9 @@ Route::put('save-empleados', [\App\Http\Controllers\EmpleadoController::class, '
 Route::delete('delete-empleados/{id}', [\App\Http\Controllers\EmpleadoController::class, 'deleteEmpleado'])->name('api-deleteEmpleado');
 Route::post('edit-empleados/{id}', [\App\Http\Controllers\EmpleadoController::class, 'editEmpleado'])->name('api-editEmpleado');
 Route::get('get-empleado/{id}', [\App\Http\Controllers\EmpleadoController::class, 'getEmpleado'])->name('getEmpleado');
+
+// Registro de usuario
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
+
+// Inicio de sesión
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
